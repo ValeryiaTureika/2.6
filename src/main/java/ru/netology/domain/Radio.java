@@ -182,13 +182,14 @@ public class Radio {
 
         if (currentRadioStationNumber < getMinRadioStation()) {
             this.currentRadioStationNumber = getMinRadioStation();
-            return;
         }
 
         if (currentRadioStationNumber == getMaxRadioStation()) {
             this.currentRadioStationNumber = getMinRadioStation();
+            return;
+        } else {
+            return;
         }
-        return;
     }
 
 
