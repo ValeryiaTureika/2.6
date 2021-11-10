@@ -4,10 +4,10 @@ public class Radio {
     private int maxVolume = 100;
     private int minVolume;
     private int currentSoundVolume;
-    private int currentRadioStationNumber;
-    private int maxRadioStation = 9;
-    private int minRadioStation;
     private int sizeRadioStations = 10;
+    private int currentRadioStationNumber;
+    private int maxRadioStation;
+    private int minRadioStation;
 
     public Radio() {
     }
@@ -53,7 +53,6 @@ public class Radio {
         this.currentSoundVolume = currentSoundVolume;
     }
 
-
     public void setIncreaseVolume(int currentSoundVolume) {
         if (getMaxVolume() > currentSoundVolume && currentSoundVolume >= getMinVolume()) {
             this.currentSoundVolume = currentSoundVolume + 1;
@@ -78,7 +77,6 @@ public class Radio {
             return;
         }
     }
-
 
     public void setIndoorVolume(int currentSoundVolume) {
         if (getMinVolume() < currentSoundVolume && currentSoundVolume <= getMaxVolume()) {
@@ -105,37 +103,20 @@ public class Radio {
         }
     }
 
-
     public int getMaxRadioStation() {
-        return 9;
+        if (sizeRadioStations > 0) {
+            return sizeRadioStations - 1;
+        }
+        return 0;
     }
 
     public int getMinRadioStation() {
         return 0;
     }
 
-    public int getSizeRadioStations() {
-        return sizeRadioStations;
-    }
-
-    public void getSizeRadioStationsDesigner() {
-        if (sizeRadioStations <= (maxRadioStation + 1) && sizeRadioStations > minRadioStation) {
-            this.sizeRadioStations = sizeRadioStations;
-        }
-        if (sizeRadioStations < minRadioStation) {
-            this.sizeRadioStations = minRadioStation;
-        }
-        if (sizeRadioStations >= (maxRadioStation + 1)) {
-            this.sizeRadioStations = (maxRadioStation + 1);
-        } else {
-            return;
-        }
-    }
-
     public int getCurrentRadioStationNumber() {
         return currentRadioStationNumber;
     }
-
 
     public void setCurrentRadioStationNumber(int currentRadioStationNumber) {
         if (currentRadioStationNumber < getMinRadioStation()) {
@@ -157,6 +138,20 @@ public class Radio {
         this.currentRadioStationNumber = currentRadioStationNumber;
     }
 
+    public int getSizeRadioStations() {
+        return sizeRadioStations;
+    }
+
+    public void getSizeRadioStationsDesigner() {
+        if (sizeRadioStations > minRadioStation) {
+            this.sizeRadioStations = sizeRadioStations;
+        }
+        if (sizeRadioStations < minRadioStation) {
+            this.sizeRadioStations = minRadioStation;
+        } else {
+            return;
+        }
+    }
 
     public void setNextRadioStationNumber(int currentRadioStationNumber) {
         if (currentRadioStationNumber >= getMinRadioStation() && currentRadioStationNumber < getMaxRadioStation()) {
@@ -174,16 +169,13 @@ public class Radio {
             this.currentRadioStationNumber = currentRadioStationNumber + 1;
             return;
         }
-
         if (currentRadioStationNumber > getMaxRadioStation()) {
             this.currentRadioStationNumber = getMaxRadioStation();
             return;
         }
-
         if (currentRadioStationNumber < getMinRadioStation()) {
             this.currentRadioStationNumber = getMinRadioStation();
         }
-
         if (currentRadioStationNumber == getMaxRadioStation()) {
             this.currentRadioStationNumber = getMinRadioStation();
             return;
