@@ -625,7 +625,6 @@ class RadioTest {
         assertEquals(expected, actual);
     }
 
-
     @Test
     public void maxRadioStation() {
         Radio rad = new Radio();
@@ -655,20 +654,33 @@ class RadioTest {
 
 
     @Test
-    public void maxRadioStationUpperLimitDesigner() {
+    public void maxRadioStationDesigner() {
         Radio rad = new Radio(15, 14);
+        rad.getMaxRadioStation();
         rad.getSizeRadioStationsDesigner();
         rad.getCurrentRadioStationNumberDesigner();
 
 
         int actual = rad.getMaxRadioStation();
-        int expected = 9;
+        int expected = 14;
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void maxRadioStationLowerLimitDesigner() {
+        Radio rad = new Radio(-5, -5);
+        rad.getMaxRadioStation();
+        rad.getSizeRadioStationsDesigner();
+        rad.getCurrentRadioStationNumberDesigner();
+
+
+        int actual = rad.getMaxRadioStation();
+        int expected = 0;
+        assertEquals(expected, actual);
+    }
 
     @Test
-    public void minRadioStationLowerLimitDesigner() {
+    public void minRadioStationLowerLimit9Designer() {
         Radio rad = new Radio(-1, -5);
         rad.getSizeRadioStationsDesigner();
         rad.getCurrentRadioStationNumberDesigner();
@@ -680,14 +692,15 @@ class RadioTest {
     }
 
     @Test
-    public void maxRadioStationLowerLimitDesigner() {
+    public void maxRadioStationLowerLimit5Designer() {
         Radio rad = new Radio(5, 4);
+        rad.getMaxRadioStation();
         rad.getSizeRadioStationsDesigner();
         rad.getCurrentRadioStationNumberDesigner();
 
 
         int actual = rad.getMaxRadioStation();
-        int expected = 9;
+        int expected = 4;
         assertEquals(expected, actual);
     }
 
@@ -712,52 +725,9 @@ class RadioTest {
     }
 
     @Test
-    public void sizeRadioStationsUpperLimitDesigner() {
-        Radio rad = new Radio(15, 14);
-        rad.getSizeRadioStationsDesigner();
-        rad.getCurrentRadioStationNumberDesigner();
-
-        int actual = rad.getSizeRadioStations();
-        int expected = 10;
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void sizeRadioStationsUpperLimitValue1Designer() {
-        Radio rad = new Radio(11, 12);
-        rad.getSizeRadioStationsDesigner();
-        rad.getCurrentRadioStationNumberDesigner();
-
-        int actual = rad.getSizeRadioStations();
-        int expected = 10;
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void sizeRadioStationsUpperLimitValue2Designer() {
-        Radio rad = new Radio(10, 11);
-        rad.getSizeRadioStationsDesigner();
-        rad.getCurrentRadioStationNumberDesigner();
-
-        int actual = rad.getSizeRadioStations();
-        int expected = 10;
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void sizeRadioStationsUpperLimitValue3Designer() {
-        Radio rad = new Radio(9, 10);
-        rad.getSizeRadioStationsDesigner();
-        rad.getCurrentRadioStationNumberDesigner();
-
-        int actual = rad.getSizeRadioStations();
-        int expected = 9;
-        assertEquals(expected, actual);
-    }
-
-    @Test
     public void sizeRadioStationsLowerLimitDesigner() {
         Radio rad = new Radio(-562, 14);
+        rad.getMaxRadioStation();
         rad.getSizeRadioStationsDesigner();
         rad.getCurrentRadioStationNumberDesigner();
 
@@ -768,12 +738,13 @@ class RadioTest {
 
     @Test
     public void sizeRadioStationsLowerLimitValue1Designer() {
-        Radio rad = new Radio(0, 12);
-        rad.getSizeRadioStationsDesigner();
+        Radio rad = new Radio(20, 15);
+        rad.getMaxRadioStation();
         rad.getCurrentRadioStationNumberDesigner();
+        rad.getSizeRadioStationsDesigner();
 
         int actual = rad.getSizeRadioStations();
-        int expected = 0;
+        int expected = 20;
         assertEquals(expected, actual);
     }
 
@@ -803,6 +774,7 @@ class RadioTest {
     @Test
     public void currentRadioStationBeyondUpperLimit() {
         Radio rad = new Radio();
+        rad.getMaxRadioStation();
         rad.setCurrentRadioStationNumber(52);
 
         int actual = rad.getCurrentRadioStationNumber();
@@ -813,6 +785,7 @@ class RadioTest {
     @Test
     public void currentRadioStationUpperLimitValue1() {
         Radio rad = new Radio();
+        rad.getMaxRadioStation();
         rad.setCurrentRadioStationNumber(10);
 
         int actual = rad.getCurrentRadioStationNumber();
@@ -823,6 +796,7 @@ class RadioTest {
     @Test
     public void currentRadioStationUpperLimitValue2() {
         Radio rad = new Radio();
+        rad.getMaxRadioStation();
         rad.setCurrentRadioStationNumber(9);
 
         int actual = rad.getCurrentRadioStationNumber();
@@ -833,6 +807,7 @@ class RadioTest {
     @Test
     public void currentRadioStationUpperLimitValue3() {
         Radio rad = new Radio();
+        rad.getMaxRadioStation();
         rad.setCurrentRadioStationNumber(8);
 
         int actual = rad.getCurrentRadioStationNumber();
@@ -883,6 +858,7 @@ class RadioTest {
     @Test
     public void currentRadioStationAverageNumberNormalRange() {
         Radio rad = new Radio();
+        rad.getMaxRadioStation();
         rad.setCurrentRadioStationNumber(5);
 
         int actual = rad.getCurrentRadioStationNumber();
@@ -894,17 +870,19 @@ class RadioTest {
     @Test
     public void currentRadioStationBeyondUpperLimitDesigner() {
         Radio rad = new Radio(55, 55);
+        rad.getMaxRadioStation();
         rad.getSizeRadioStationsDesigner();
         rad.getCurrentRadioStationNumberDesigner();
 
         int actual = rad.getCurrentRadioStationNumber();
-        int expected = 9;
+        int expected = 54;
         assertEquals(expected, actual);
     }
 
     @Test
     public void currentRadioStationUpperLimitValue1Designer() {
         Radio rad = new Radio(10, 10);
+        rad.getMaxRadioStation();
         rad.getSizeRadioStationsDesigner();
         rad.getCurrentRadioStationNumberDesigner();
 
@@ -916,22 +894,24 @@ class RadioTest {
     @Test
     public void currentRadioStationUpperLimitValue2Designer() {
         Radio rad = new Radio(9, 9);
+        rad.getMaxRadioStation();
         rad.getSizeRadioStationsDesigner();
         rad.getCurrentRadioStationNumberDesigner();
 
         int actual = rad.getCurrentRadioStationNumber();
-        int expected = 9;
+        int expected = 8;
         assertEquals(expected, actual);
     }
 
     @Test
     public void currentRadioStationUpperLimitValue3Designer() {
         Radio rad = new Radio(8, 8);
+        rad.getMaxRadioStation();
         rad.getSizeRadioStationsDesigner();
         rad.getCurrentRadioStationNumberDesigner();
 
         int actual = rad.getCurrentRadioStationNumber();
-        int expected = 8;
+        int expected = 7;
         assertEquals(expected, actual);
     }
 
@@ -971,22 +951,24 @@ class RadioTest {
     @Test
     public void currentRadioStationLowerLimit3Designer() {
         Radio rad = new Radio(1, 1);
+        rad.getMaxRadioStation();
         rad.getSizeRadioStationsDesigner();
         rad.getCurrentRadioStationNumberDesigner();
 
         int actual = rad.getCurrentRadioStationNumber();
-        int expected = 1;
+        int expected = 0;
         assertEquals(expected, actual);
     }
 
     @Test
     public void currentRadioStationAverageNumberNormalRangeDesigner() {
-        Radio rad = new Radio(5, 5);
+        Radio rad = new Radio(5, 3);
+        rad.getMaxRadioStation();
         rad.getSizeRadioStationsDesigner();
         rad.getCurrentRadioStationNumberDesigner();
 
         int actual = rad.getCurrentRadioStationNumber();
-        int expected = 5;
+        int expected = 3;
         assertEquals(expected, actual);
     }
 
@@ -994,6 +976,7 @@ class RadioTest {
     @Test
     public void nextRadioStationNumberBeyondUpperLimit() {
         Radio rad = new Radio();
+        rad.getMaxRadioStation();
         rad.setNextRadioStationNumber(34);
 
         int actual = rad.getCurrentRadioStationNumber();
@@ -1004,6 +987,7 @@ class RadioTest {
     @Test
     public void nextRadioStationNumberUpperLimit1() {
         Radio rad = new Radio();
+        rad.getMaxRadioStation();
         rad.setNextRadioStationNumber(10);
 
         int actual = rad.getCurrentRadioStationNumber();
@@ -1014,6 +998,7 @@ class RadioTest {
     @Test
     public void nextRadioStationNumberUpperLimit2() {
         Radio rad = new Radio();
+        rad.getMaxRadioStation();
         rad.setNextRadioStationNumber(9);
 
         int actual = rad.getCurrentRadioStationNumber();
@@ -1024,6 +1009,7 @@ class RadioTest {
     @Test
     public void nextRadioStationNumberUpperLimit3() {
         Radio rad = new Radio();
+        rad.getMaxRadioStation();
         rad.setNextRadioStationNumber(8);
 
         int actual = rad.getCurrentRadioStationNumber();
@@ -1064,6 +1050,7 @@ class RadioTest {
     @Test
     public void nextRadioStationNumberLowerLimit3() {
         Radio rad = new Radio();
+        rad.getMaxRadioStation();
         rad.setNextRadioStationNumber(1);
 
         int actual = rad.getCurrentRadioStationNumber();
@@ -1074,6 +1061,7 @@ class RadioTest {
     @Test
     public void nextRadioStationNumberAverageNormalRange() {
         Radio rad = new Radio();
+        rad.getMaxRadioStation();
         rad.setNextRadioStationNumber(5);
 
         int actual = rad.getCurrentRadioStationNumber();
@@ -1083,22 +1071,23 @@ class RadioTest {
 
 
     @Test
-    public void nextRadioStationNumberBeyondUpperLimitDesigner() {
+    public void nextRadioStationNumberBeyondUpperLimit5Designer() {
         Radio rad = new Radio(5, 34);
+        rad.getMaxRadioStation();
         rad.getSizeRadioStationsDesigner();
         rad.getNextRadioStationNumberDesigner();
 
         int actual = rad.getCurrentRadioStationNumber();
-        int expected = 9;
+        int expected = 4;
         assertEquals(expected, actual);
     }
 
     @Test
-    public void nextRadioStationNumberUpperLimit1Designer() {
+    public void nextRadioStationNumberUpperLimit101Designer() {
         Radio rad = new Radio(10, 10);
+        rad.getMaxRadioStation();
         rad.getSizeRadioStationsDesigner();
         rad.getNextRadioStationNumberDesigner();
-        ;
 
         int actual = rad.getCurrentRadioStationNumber();
         int expected = 9;
@@ -1108,6 +1097,7 @@ class RadioTest {
     @Test
     public void nextRadioStationNumberUpperLimit2Designer() {
         Radio rad = new Radio(10, 9);
+        rad.getMaxRadioStation();
         rad.getSizeRadioStationsDesigner();
         rad.getNextRadioStationNumberDesigner();
 
@@ -1118,12 +1108,13 @@ class RadioTest {
 
     @Test
     public void nextRadioStationNumberUpperLimit3Designer() {
-        Radio rad = new Radio(8, 8);
+        Radio rad = new Radio(8, 7);
+        rad.getMaxRadioStation();
         rad.getSizeRadioStationsDesigner();
         rad.getNextRadioStationNumberDesigner();
 
         int actual = rad.getCurrentRadioStationNumber();
-        int expected = 9;
+        int expected = 0;
         assertEquals(expected, actual);
     }
 
@@ -1152,33 +1143,36 @@ class RadioTest {
     @Test
     public void nextRadioStationNumberLowerLimit2Designer() {
         Radio rad = new Radio(0, 0);
+        rad.getMaxRadioStation();
         rad.getSizeRadioStationsDesigner();
         rad.getNextRadioStationNumberDesigner();
 
         int actual = rad.getCurrentRadioStationNumber();
-        int expected = 1;
+        int expected = 0;
         assertEquals(expected, actual);
     }
 
     @Test
     public void nextRadioStationNumberLowerLimit3Designer() {
         Radio rad = new Radio(1, 1);
+        rad.getMaxRadioStation();
         rad.getSizeRadioStationsDesigner();
         rad.getNextRadioStationNumberDesigner();
 
         int actual = rad.getCurrentRadioStationNumber();
-        int expected = 2;
+        int expected = 0;
         assertEquals(expected, actual);
     }
 
     @Test
     public void nextRadioStationNumberAverageNormalRangeDesigner() {
-        Radio rad = new Radio(5, 5);
+        Radio rad = new Radio(5, 3);
+        rad.getMaxRadioStation();
         rad.getSizeRadioStationsDesigner();
         rad.getNextRadioStationNumberDesigner();
 
         int actual = rad.getCurrentRadioStationNumber();
-        int expected = 6;
+        int expected = 4;
         assertEquals(expected, actual);
     }
 
@@ -1206,6 +1200,7 @@ class RadioTest {
     @Test
     public void prevRadioStationNumberLowerLimit2() {
         Radio rad = new Radio();
+        rad.getMaxRadioStation();
         rad.setPrevRadioStationNumber(0);
 
         int actual = rad.getCurrentRadioStationNumber();
@@ -1216,6 +1211,7 @@ class RadioTest {
     @Test
     public void prevRadioStationNumberLowerLimit3() {
         Radio rad = new Radio();
+        rad.getMaxRadioStation();
         rad.setPrevRadioStationNumber(1);
 
         int actual = rad.getCurrentRadioStationNumber();
@@ -1226,6 +1222,7 @@ class RadioTest {
     @Test
     public void prevRadioStationNumberBeyondUpperLimit() {
         Radio rad = new Radio();
+        rad.getMaxRadioStation();
         rad.setPrevRadioStationNumber(52);
 
         int actual = rad.getCurrentRadioStationNumber();
@@ -1236,6 +1233,7 @@ class RadioTest {
     @Test
     public void prevRadioStationNumberUpperLimit1() {
         Radio rad = new Radio();
+        rad.getMaxRadioStation();
         rad.setPrevRadioStationNumber(10);
 
         int actual = rad.getCurrentRadioStationNumber();
@@ -1246,6 +1244,7 @@ class RadioTest {
     @Test
     public void prevRadioStationNumberUpperLimit2() {
         Radio rad = new Radio();
+        rad.getMaxRadioStation();
         rad.setPrevRadioStationNumber(9);
 
         int actual = rad.getCurrentRadioStationNumber();
@@ -1256,6 +1255,7 @@ class RadioTest {
     @Test
     public void prevRadioStationNumberUpperLimit3() {
         Radio rad = new Radio();
+        rad.getMaxRadioStation();
         rad.setPrevRadioStationNumber(8);
 
         int actual = rad.getCurrentRadioStationNumber();
@@ -1266,6 +1266,7 @@ class RadioTest {
     @Test
     public void prevRadioStationNumberAverageNormalRange() {
         Radio rad = new Radio();
+        rad.getMaxRadioStation();
         rad.setPrevRadioStationNumber(5);
 
         int actual = rad.getCurrentRadioStationNumber();
@@ -1277,6 +1278,7 @@ class RadioTest {
     @Test
     public void prevRadioStationNumberBeyondLowerLimitDesigner() {
         Radio rad = new Radio(8, -64);
+        rad.getMaxRadioStation();
         rad.getSizeRadioStationsDesigner();
         rad.getPrevRadioStationNumberDesigner();
 
@@ -1288,6 +1290,7 @@ class RadioTest {
     @Test
     public void prevRadioStationNumberLowerLimit1Designer() {
         Radio rad = new Radio(-1, -1);
+        rad.getMaxRadioStation();
         rad.getSizeRadioStationsDesigner();
         rad.getPrevRadioStationNumberDesigner();
 
@@ -1299,17 +1302,7 @@ class RadioTest {
     @Test
     public void prevRadioStationNumberLowerLimit2Designer() {
         Radio rad = new Radio(0, 0);
-        rad.getSizeRadioStationsDesigner();
-        rad.getPrevRadioStationNumberDesigner();
-
-        int actual = rad.getCurrentRadioStationNumber();
-        int expected = 9;
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void prevRadioStationNumberLowerLimit3Designer() {
-        Radio rad = new Radio(1, 1);
+        rad.getMaxRadioStation();
         rad.getSizeRadioStationsDesigner();
         rad.getPrevRadioStationNumberDesigner();
 
@@ -1319,19 +1312,45 @@ class RadioTest {
     }
 
     @Test
-    public void prevRadioStationNumberBeyondUpperLimitDesigner() {
-        Radio rad = new Radio(52, 52);
+    public void prevRadioStationNumberLowerLimit3Designer() {
+        Radio rad = new Radio(6, 1);
+        rad.getMaxRadioStation();
         rad.getSizeRadioStationsDesigner();
         rad.getPrevRadioStationNumberDesigner();
 
         int actual = rad.getCurrentRadioStationNumber();
-        int expected = 9;
+        int expected = 0;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void prevRadioStationNumberBeyondUpperLimit52Designer() {
+        Radio rad = new Radio(52, 52);
+        rad.getMaxRadioStation();
+        rad.getSizeRadioStationsDesigner();
+        rad.getPrevRadioStationNumberDesigner();
+
+        int actual = rad.getCurrentRadioStationNumber();
+        int expected = 51;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void prevRadioStationNumberBeyondUpperLimitDesigner() {
+        Radio rad = new Radio(31, 52);
+        rad.getMaxRadioStation();
+        rad.getSizeRadioStationsDesigner();
+        rad.getPrevRadioStationNumberDesigner();
+
+        int actual = rad.getCurrentRadioStationNumber();
+        int expected = 30;
         assertEquals(expected, actual);
     }
 
     @Test
     public void prevRadioStationNumberUpperLimit1Designer() {
-        Radio rad = new Radio(10, 10);
+        Radio rad = new Radio(11, 10);
+        rad.getMaxRadioStation();
         rad.getSizeRadioStationsDesigner();
         rad.getPrevRadioStationNumberDesigner();
 
@@ -1342,18 +1361,8 @@ class RadioTest {
 
     @Test
     public void prevRadioStationNumberUpperLimit2Designer() {
-        Radio rad = new Radio(9, 9);
-        rad.getSizeRadioStationsDesigner();
-        rad.getPrevRadioStationNumberDesigner();
-
-        int actual = rad.getCurrentRadioStationNumber();
-        int expected = 8;
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void prevRadioStationNumberUpperLimit3Designer() {
-        Radio rad = new Radio(8, 8);
+        Radio rad = new Radio(11, 8);
+        rad.getMaxRadioStation();
         rad.getSizeRadioStationsDesigner();
         rad.getPrevRadioStationNumberDesigner();
 
@@ -1363,8 +1372,20 @@ class RadioTest {
     }
 
     @Test
+    public void prevRadioStationNumberUpperLimit3Designer() {
+        Radio rad = new Radio(11, 9);
+        rad.getMaxRadioStation();
+        rad.getSizeRadioStationsDesigner();
+        rad.getPrevRadioStationNumberDesigner();
+
+        int actual = rad.getCurrentRadioStationNumber();
+        int expected = 8;
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void prevRadioStationNumberAverageNormalRangeDesigner() {
-        Radio rad = new Radio(5, 5);
+        Radio rad = new Radio(11, 5);
         rad.getSizeRadioStationsDesigner();
         rad.getPrevRadioStationNumberDesigner();
 
